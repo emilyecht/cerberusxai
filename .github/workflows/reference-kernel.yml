@@ -1,0 +1,49 @@
+name: Verify CERBERUS reference kernel
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "flight-reference/**"
+      - ".github/workflows/reference-kernel.yml"
+  pull_request:
+    paths:
+      - "flight-reference/**"
+      - ".github/workflows/reference-kernel.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    name: ${{ matrix.compiler }} · unit + property campaign
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        compiler: [gcc, clang]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build and test
+        working-directory: flight-reference
+        env:
+          CC: ${{ matrix.compiler }}
+        run: |
+          make clean
+          make all
+          make test
+          make demo
+
+  sanitizers:
+    name: Address + undefined behavior sanitizers
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run sanitizer suite
+        working-directory: flight-reference
+        env:
+          CC: gcc
+        run: make sanitize

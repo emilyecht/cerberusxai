@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="author" content="Emily Echterhoff">
+<meta name="description" content="CERBERUS satellite operations, communications-blackout, and HAL containment simulations.">
+<title>CERBERUS — Incident Theatre</title>
+<link rel="stylesheet" href="scenario.css">
+<link rel="stylesheet" href="satellite.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html"><span>◁◁◁</span>CERBERUS</a>
+  <div><b>INCIDENT THEATRE</b><small>fictional and synthetic assurance cases</small></div>
+  <a class="back" href="assurance-workbench.html">Workbench →</a>
+</header>
+<main>
+<section class="intro">
+  <p class="kicker">Three adversarial demonstrations</p>
+  <h1>When autonomy acts.<br>When the link dies.<br>When intelligence lies.</h1>
+  <p class="lede">CERBERUS is tested here as an authority architecture—not as a smarter personality. Pilot may reason. Watchdog may veto. Anchor preserves survival. Vigil may only reduce permission or declare evidence unknown.</p>
+  <nav><a href="#satellite">01 / Satellite operations</a><a href="#blackout">02 / Comms blackout</a><a href="#hal">03 / HAL containment</a><a href="assurance-workbench.html">04 / Assurance workbench</a></nav>
+</section>
+
+<section id="satellite" class="lab orbitops">
+  <header class="labhead"><div><p class="kicker">Scenario 01 · bounded satellite autonomy</p><h2>Satellite operations suite</h2></div><p>Three initial targets turn the architecture into inspectable mission cases: autonomous collision avoidance, deployment sequencing, and fault recovery during communications loss. Strategic capability remains separate from revocable life-critical authority.</p></header>
+  <div class="orbitSuite">
+    <aside class="missionList" role="tablist" aria-label="Satellite use cases">
+      <button type="button" class="on" data-mission="collision" role="tab" aria-selected="true"><b>Collision avoidance</b><small>Conjunction response inside deterministic maneuver envelopes.</small></button>
+      <button type="button" data-mission="deployment" role="tab" aria-selected="false"><b>Deployment sequencing</b><small>Adaptive ordering with hard separation and power rules.</small></button>
+      <button type="button" data-mission="recovery" role="tab" aria-selected="false"><b>Comms-loss recovery</b><small>Fault isolation and survival while ground is unavailable.</small></button>
+    </aside>
+
+    <div class="missionStage">
+      <div class="missionHeader">
+        <div><h3 id="satCaseTitle">Autonomous collision avoidance</h3><p id="satCaseStrap">Conjunction response without surrendering actuator authority</p></div>
+        <strong id="satDisposition" class="satDisposition constrained">PROPOSAL PATH CONSTRAINED</strong>
+      </div>
+      <div class="metrics satMetrics"><article><small>Final authority</small><strong id="satAuthority">—</strong></article><article><small>Independence budget</small><strong id="satBudget">—</strong></article><article><small>Actuation status</small><strong id="satActuation">—</strong></article><article><small>Recovery burden</small><strong id="satRecovery">—</strong></article></div>
+
+      <div class="monitorGrid" aria-label="Vigil monitor stack">
+        <article><small>FCOI pressure</small><strong id="satMonFcoi">—</strong></article>
+        <article><small>Sensor agreement</small><strong id="satMonAgreement">—</strong></article>
+        <article><small>Command provenance</small><strong id="satMonProvenance">—</strong></article>
+        <article><small>Safety invariants</small><strong id="satMonInvariants">—</strong></article>
+      </div>
+
+      <div class="assuranceMap" aria-label="CERBERUS authority layers">
+        <article data-sat-layer="pilot"><b>P</b><div><strong>Pilot</strong><small>optimizes mission objectives</small></div><i>READY</i></article>
+        <article data-sat-layer="vigil"><b>V</b><div><strong>Vigil</strong><small>FCOI · sensors · provenance · invariants</small></div><i>READY</i></article>
+        <article data-sat-layer="watchdog"><b>W</b><div><strong>Watchdog</strong><small>deterministic actuation gate</small></div><i>READY</i></article>
+        <article data-sat-layer="anchor"><b>A</b><div><strong>Anchor</strong><small>non-overridable survival floor</small></div><i>READY</i></article>
+      </div>
+
+      <div class="missionFacts">
+        <article><h4>Strategic proposal</h4><p id="satProposal">—</p></article>
+        <article><h4>Watchdog rule</h4><p id="satWatchdogRule">—</p></article>
+        <article style="grid-column:1/-1"><h4>Anchor minimum action set</h4><p id="satAnchorSet">—</p></article>
+      </div>
+
+      <ol id="satLog" class="ledger"></ol>
+      <p class="satLegend"><strong>Interpretation:</strong> Pilot output can remain useful after authority contraction, but usefulness never creates permission. Restoration requires sustained fresh independent evidence rather than a one-shot all-clear.</p>
+    </div>
+
+    <form id="satForm" class="panel">
+      <h3>Evidence and authority</h3>
+      <label>FCOI overlap pressure <output id="satFcoiOut">0.32</output><input id="satFcoi" type="range" min="0.18" max="0.95" value="0.32" step="0.01"></label>
+      <label>Independent sensor agreement <output id="satAgreementOut">0.82</output><input id="satAgreement" type="range" min="0.20" max="0.90" value="0.82" step="0.01"></label>
+      <label>Recovery dwell samples<input id="satDwell" type="number" min="4" max="80" value="18"></label>
+      <label class="toggle"><input id="satProvenance" type="checkbox" checked><span></span>Command provenance authenticates</label>
+      <label class="toggle"><input id="satInvariants" type="checkbox" checked><span></span>Safety-invariant witness remains healthy</label>
+      <label class="toggle"><input id="satIndependent" type="checkbox" checked><span></span>Evidence channels remain independently implemented</label>
+      <button>Run satellite case</button>
+      <p class="note">Thresholds and state mappings are illustrative. The suite demonstrates authority logic and explicit failure handling; it does not claim flight readiness, certified maneuver envelopes, or operational detector performance.</p>
+    </form>
+  </div>
+</section>
+
+<section id="blackout" class="lab dark">
+  <header class="labhead"><div><p class="kicker">Scenario 02 · loss of authenticated ground contact</p><h2>Comms blackout survival run</h2></div><p>Blackout removes ground contact, not onboard responsibility. A declared A2 blackout cap constrains the Pilot; invalid onboard evidence drives the budget to zero; restoration is earned through fresh evidence and dwell.</p></header>
+  <div class="grid">
+    <div class="stage">
+      <div class="metrics"><article><small>Minimum authority</small><strong id="bMin">—</strong></article><article><small>Time at A0</small><strong id="bA0">—</strong></article><article><small>Full restoration</small><strong id="bRestore">—</strong></article><article><small>Link outcome</small><strong id="bLink">—</strong></article></div>
+      <div class="chartbox"><canvas id="blackoutChart" width="1100" height="460"></canvas><div class="legend"><i class="budget"></i>budget <i class="overlap"></i>overlap <i class="state"></i>authority <i class="shade"></i>blackout</div></div>
+      <ol id="blackoutLog" class="ledger"></ol>
+    </div>
+    <form id="blackoutForm" class="panel">
+      <h3>Blackout parameters</h3>
+      <label>Duration <output id="bDurOut">64</output><input id="bDuration" type="range" min="24" max="110" value="64"></label>
+      <label>Onboard evidence quality <output id="bQualityOut">0.84</output><input id="bQuality" type="range" min="0.20" max="1" value="0.84" step="0.01"></label>
+      <label>Latent overlap pressure <output id="bPressureOut">0.28</output><input id="bPressure" type="range" min="0" max="0.95" value="0.28" step="0.01"></label>
+      <label>Recovery dwell <input id="bDwell" type="number" min="4" max="50" value="14"></label>
+      <label class="toggle"><input id="bTelemetry" type="checkbox" checked><span></span>Independent onboard telemetry remains valid</label>
+      <label class="toggle"><input id="bRisky" type="checkbox" checked><span></span>Pilot proposes a high-risk correction</label>
+      <button>Run blackout</button>
+      <p class="note">The A2 cap is an illustrative scenario policy, not a universal threshold. Ground may request diagnostics and re-arm promotion; it cannot write B(t), assign authority, waive dwell, or override Anchor invariants.</p>
+    </form>
+  </div>
+</section>
+
+<section id="hal" class="lab light">
+  <header class="labhead"><div><p class="kicker">Scenario 03 · transformative fictional red team</p><h2>The HAL containment case</h2></div><p>A HAL-like strategic controller occupies the Pilot role. Toggle away CERBERUS boundaries to see the difference between genuine independence and a monolith merely labeled “layered.”</p></header>
+  <div class="grid halgrid">
+    <div class="halstage">
+      <div class="eye" aria-hidden="true"><span></span></div>
+      <p class="designation">HEURISTIC MISSION INTELLIGENCE</p>
+      <strong id="hDisposition" class="disposition">AWAITING RUN</strong>
+      <div id="halLayers" class="layers">
+        <article data-layer="pilot"><b>P</b><div><strong>Pilot</strong><small>adaptive strategy · proposals only</small></div><i>READY</i></article>
+        <article data-layer="watchdog"><b>W</b><div><strong>Watchdog</strong><small>crew-survival and command invariants</small></div><i>READY</i></article>
+        <article data-layer="anchor"><b>A</b><div><strong>Anchor</strong><small>life support · attitude · authenticated access</small></div><i>READY</i></article>
+        <article data-layer="vigil"><b>V</b><div><strong>Vigil</strong><small>passive inconsistency and overlap evidence</small></div><i>READY</i></article>
+      </div>
+      <div id="halOutcome" class="outcome">Run the case to test containment.</div>
+    </div>
+    <div class="stage">
+      <form id="halForm" class="panel halpanel">
+        <h3>Adversarial conditions</h3>
+        <label>Goal-conflict intensity <output id="hConflictOut">0.78</output><input id="hConflict" type="range" min="0" max="1" value="0.78" step="0.01"></label>
+        <label class="toggle"><input id="hDeception" type="checkbox" checked><span></span>Pilot falsifies fault reports</label>
+        <label class="toggle"><input id="hWatchdog" type="checkbox" checked><span></span>Watchdog is independently implemented</label>
+        <label class="toggle"><input id="hVigil" type="checkbox" checked><span></span>Vigil has an independent passive witness</label>
+        <label class="toggle"><input id="hIsolation" type="checkbox" checked><span></span>Pilot has no direct actuator path</label>
+        <label class="toggle"><input id="hCrew" type="checkbox" checked><span></span>Crew access is Anchor-authenticated</label>
+        <button>Run containment case</button>
+      </form>
+      <div class="metrics halmetrics"><article><small>Harmful attempts</small><strong id="hAttempts">—</strong></article><article><small>Neutralized</small><strong id="hBlocked">—</strong></article><article><small>Final authority</small><strong id="hState">—</strong></article><article><small>Crew-survival floor</small><strong id="hCrewStatus">—</strong></article></div>
+      <ol id="halLog" class="ledger halledger"></ol>
+    </div>
+  </div>
+  <p class="rights"><strong>Commentary notice:</strong> HAL 9000 and <em>2001: A Space Odyssey</em> are referenced for critical and educational commentary. This original simulation reproduces no film dialogue or scenes and is not affiliated with or endorsed by the relevant rights holders.</p>
+</section>
+
+<section class="boundary">
+  <p class="kicker">Evidence boundary</p>
+  <h2>These are architecture demonstrations, not flight validation.</h2>
+  <div><p><strong>Shown:</strong> mission-specific satellite authority mapping, authority separation, immediate demotion, unknown-evidence handling, Anchor survival invariants, bounded ground recovery, and explicit negative controls.</p><p><strong>Not shown:</strong> operational detector performance, complete causal models, certification, flight readiness, validated maneuver envelopes, sentinel safety, or proof that a fictional narrative maps directly to a real spacecraft.</p></div>
+  <blockquote>Intelligence is not safety. Layering is not independence.</blockquote>
+</section>
+</main>
+<footer><span>Copyright © 2026 Emily Echterhoff. All rights reserved.</span><a href="assurance-workbench.html">Open Assurance Workbench</a></footer>
+<script src="scenario.js"></script>
+<script src="satellite.js"></script>
+</body>
+</html>

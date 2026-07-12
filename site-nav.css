@@ -1,0 +1,246 @@
+/* Static whole-site launcher injected into every deployed CERBERUS interface. */
+:root {
+  --cerb-nav-night: #090c0a;
+  --cerb-nav-panel: #111612;
+  --cerb-nav-paper: #ece7da;
+  --cerb-nav-muted: #9aa198;
+  --cerb-nav-acid: #caff5b;
+  --cerb-nav-rust: #ef6b50;
+  --cerb-nav-cyan: #69d8c6;
+  --cerb-nav-line: rgba(236, 231, 218, 0.18);
+}
+
+.cerberus-launcher {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  padding: 28px clamp(20px, 5vw, 72px) 34px;
+  border-bottom: 1px solid var(--cerb-nav-line);
+  background:
+    radial-gradient(circle at 88% 10%, rgba(105, 216, 198, 0.08), transparent 26%),
+    linear-gradient(180deg, #0d110e, var(--cerb-nav-night));
+  color: var(--cerb-nav-paper);
+}
+
+.cerberus-launcher-head {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 24px;
+  align-items: end;
+  width: min(1180px, 100%);
+  margin: 0 auto 20px;
+}
+
+.cerberus-launcher-head p {
+  margin: 0;
+  color: var(--cerb-nav-rust);
+  font: 900 0.62rem/1.2 Inter, ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.cerberus-launcher-head h2 {
+  margin: 0;
+  color: var(--cerb-nav-paper);
+  font: 400 clamp(1.8rem, 3vw, 3rem)/0.98 Georgia, serif;
+  letter-spacing: -0.045em;
+}
+
+.cerberus-launcher-head span {
+  display: block;
+  margin-top: 8px;
+  color: var(--cerb-nav-muted);
+  font: 600 0.72rem/1.45 Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.cerberus-page-nav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.cerberus-page-nav a {
+  position: relative;
+  min-width: 0;
+  min-height: 154px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: 1fr auto;
+  gap: 10px 12px;
+  padding: 18px;
+  border: 1px solid var(--cerb-nav-line);
+  background: rgba(255, 255, 255, 0.035);
+  color: inherit;
+  text-decoration: none;
+  box-shadow: inset 0 0 0 1px transparent;
+  transition: transform 140ms ease, border-color 140ms ease, background 140ms ease, box-shadow 140ms ease;
+}
+
+.cerberus-page-nav a:hover,
+.cerberus-page-nav a:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--cerb-nav-acid);
+  background: rgba(202, 255, 91, 0.07);
+  box-shadow: inset 0 0 0 1px rgba(202, 255, 91, 0.18), 0 14px 34px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+.cerberus-page-nav a[aria-current="page"] {
+  border-color: var(--cerb-nav-acid);
+  background: linear-gradient(135deg, rgba(202, 255, 91, 0.2), rgba(202, 255, 91, 0.055));
+  box-shadow: inset 4px 0 0 var(--cerb-nav-acid);
+}
+
+.cerberus-page-nav a[data-page="kernel"] {
+  border-color: rgba(239, 107, 80, 0.78);
+  background: linear-gradient(135deg, rgba(239, 107, 80, 0.12), rgba(255, 255, 255, 0.025));
+}
+
+.cerberus-page-nav a[data-page="kernel"]::after {
+  content: "EXECUTABLE";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 3px 6px;
+  background: var(--cerb-nav-rust);
+  color: #171a16;
+  font: 900 0.48rem/1.2 Inter, ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.12em;
+}
+
+.cerberus-page-nav .nav-index {
+  grid-column: 1;
+  grid-row: 1;
+  color: var(--cerb-nav-rust);
+  font: 900 0.68rem/1.2 Inter, ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.08em;
+}
+
+.cerberus-page-nav .nav-copy {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  padding-top: 18px;
+}
+
+.cerberus-page-nav strong,
+.cerberus-page-nav small {
+  display: block;
+}
+
+.cerberus-page-nav strong {
+  color: var(--cerb-nav-paper);
+  font: 800 0.84rem/1.25 Inter, ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+}
+
+.cerberus-page-nav small {
+  margin-top: 8px;
+  color: var(--cerb-nav-muted);
+  font: 600 0.65rem/1.4 Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.cerberus-page-nav .nav-action {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 11px;
+  border-top: 1px solid var(--cerb-nav-line);
+  color: var(--cerb-nav-cyan);
+  font: 850 0.58rem/1.2 Inter, ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.cerberus-page-nav a[data-page="kernel"] .nav-action {
+  color: var(--cerb-nav-rust);
+}
+
+.cerberus-page-nav .nav-action b {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+@media (max-width: 980px) {
+  .cerberus-page-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .cerberus-launcher {
+    padding: 22px 14px 24px;
+  }
+
+  .cerberus-launcher-head {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .cerberus-launcher-head h2 {
+    font-size: 2rem;
+  }
+
+  .cerberus-page-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .cerberus-page-nav a {
+    min-height: 142px;
+    padding: 14px;
+    gap: 8px;
+  }
+
+  .cerberus-page-nav a[data-page="kernel"]::after {
+    top: 7px;
+    right: 7px;
+    font-size: 0.42rem;
+  }
+
+  .cerberus-page-nav .nav-copy {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    padding-top: 24px;
+  }
+
+  .cerberus-page-nav .nav-index {
+    position: absolute;
+    top: 13px;
+    left: 14px;
+  }
+
+  .cerberus-page-nav strong {
+    font-size: 0.72rem;
+  }
+
+  .cerberus-page-nav small {
+    font-size: 0.58rem;
+  }
+
+  .cerberus-page-nav .nav-action {
+    font-size: 0.51rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .cerberus-page-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .cerberus-page-nav a {
+    min-height: 128px;
+  }
+}
+
+@media print {
+  .cerberus-launcher {
+    display: none !important;
+  }
+}

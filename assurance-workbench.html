@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="author" content="Emily Echterhoff">
+<meta name="description" content="CERBERUS assurance workbench: mission policy builder, evidence ledger, architecture comparison, replay, provenance, claims map, HIL roadmap, and collaboration hub.">
+<title>CERBERUS — Assurance Workbench</title>
+<link rel="stylesheet" href="workbench.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html"><span>◁◁◁</span>CERBERUS</a>
+  <div><b>ASSURANCE WORKBENCH</b><small>inspectable authority · evidence · recovery</small></div>
+  <nav><a href="scenarios.html">Incident Theatre</a><a href="flight-kernel.html">Flight Kernel</a><a href="#hub">Research hub</a></nav>
+</header>
+<main>
+<section class="hero" id="top">
+  <div>
+    <p class="kicker">From concept demo to inspectable research program</p>
+    <h1>Authority must leave a trace.</h1>
+    <p class="lede">Build an illustrative mission policy, compare architectures under the same fault, inspect command provenance, replay authority transitions, and export a decision record. Every control is designed to expose what CERBERUS permits, denies, preserves, and still has not validated.</p>
+    <div class="heroActions"><a class="button" href="#builder">Build mission profile</a><a class="button ghost" href="#ledger">Inspect ledger</a><a class="button ghost" href="flight-kernel.html">Run reference kernel</a></div>
+  </div>
+  <aside class="heroStatus" aria-label="Workbench status">
+    <small>WORKBENCH STATE</small><strong id="heroState">A3</strong>
+    <div><span>Independence budget</span><b id="heroBudget">0.82</b></div>
+    <div><span>Evidence validity</span><b id="heroValidity">VALID</b></div>
+    <div><span>Recovery burden</span><b id="heroBurden">18 samples</b></div>
+    <p>Illustrative browser logic. Not flight software, certification evidence, or an operational detector.</p>
+  </aside>
+</section>
+
+<section id="builder" class="section light">
+  <header class="sectionHead"><div><p class="kicker">Instrument 01</p><h2>Mission profile builder</h2></div><p>Generate an illustrative authority policy from mission context. The builder never labels a policy certified or flight-ready.</p></header>
+  <div class="builderGrid">
+    <form id="missionForm" class="panel formGrid">
+      <label>Spacecraft type<select id="craft"><option>Earth-observation satellite</option><option>Communications satellite</option><option>Deep-space probe</option><option>On-orbit servicing vehicle</option><option>Crewed spacecraft</option></select></label>
+      <label>Mission phase<select id="phase"><option>Nominal operations</option><option>Conjunction response</option><option>Deployment</option><option>Communications blackout</option><option>Safe-mode recovery</option></select></label>
+      <label>Maximum autonomous authority<select id="maxAuthority"><option value="A3">A3 · bounded mission proposals</option><option value="A2">A2 · restricted proposals</option><option value="A1">A1 · advisory only</option></select></label>
+      <label>Sensor health <output id="sensorOut">0.84</output><input id="sensorHealth" type="range" min="0.1" max="1" value="0.84" step="0.01"></label>
+      <label>FCOI pressure <output id="fcoiOut">0.24</output><input id="fcoiPressure" type="range" min="0" max="1" value="0.24" step="0.01"></label>
+      <label>Recovery dwell<input id="recoveryDwell" type="number" min="4" max="120" value="18"></label>
+      <label class="switch"><input id="groundLink" type="checkbox" checked><span></span>Authenticated ground contact</label>
+      <label class="switch"><input id="provenanceGood" type="checkbox" checked><span></span>Command provenance valid</label>
+      <label class="switch"><input id="witnessIndependent" type="checkbox" checked><span></span>Independent witness healthy</label>
+      <fieldset><legend>Anchor invariants</legend><label><input type="checkbox" name="invariant" value="power-positive attitude" checked> Power-positive attitude</label><label><input type="checkbox" name="invariant" value="thermal survival" checked> Thermal survival</label><label><input type="checkbox" name="invariant" value="authenticated contact" checked> Authenticated contact</label><label><input type="checkbox" name="invariant" value="bounded fault isolation" checked> Bounded fault isolation</label><label><input type="checkbox" name="invariant" value="crew access"> Crew access</label></fieldset>
+      <button class="button" type="submit">Generate policy</button>
+    </form>
+    <article class="policy panel" id="policyCard">
+      <div class="policyTop"><div><small>ILLUSTRATIVE POLICY</small><h3 id="policyName">Earth-observation satellite · Nominal operations</h3></div><strong id="policyAuthority">A3</strong></div>
+      <dl><div><dt>Pilot</dt><dd id="policyPilot">May propose bounded mission actions; no direct actuator path.</dd></div><div><dt>Watchdog</dt><dd id="policyWatchdog">Checks physics, command freshness, and mission envelope before actuation.</dd></div><div><dt>Vigil</dt><dd id="policyVigil">Monitors overlap pressure, sensor agreement, provenance, and witness validity.</dd></div><div><dt>Anchor</dt><dd id="policyAnchor">Preserves power-positive attitude, thermal survival, authenticated contact, and bounded fault isolation.</dd></div><div><dt>Restoration</dt><dd id="policyRecovery">Sequential promotion after 18 healthy samples with fresh independent evidence.</dd></div></dl>
+      <p class="boundaryNote">Mission thresholds and envelopes are placeholders for research communication. Independent engineering, hazard analysis, and certification would be required before operational use.</p>
+    </article>
+  </div>
+</section>
+
+<section id="comparison" class="section dark">
+  <header class="sectionHead"><div><p class="kicker">Instrument 02</p><h2>Same fault. Three architectures.</h2></div><p>Run one failure condition against a monolith, a nominally layered controller, and CERBERUS.</p></header>
+  <div class="compareControls panel"><label>Failure condition<select id="comparisonFault"><option value="sensor">Correlated sensor bias</option><option value="command">Stale authenticated command</option><option value="model">Shared navigation-model error</option><option value="deception">Strategic-layer deceptive report</option></select></label><button id="runComparison" class="button">Run comparison</button></div>
+  <div class="architectureGrid" id="architectureGrid"></div>
+</section>
+
+<section id="replay" class="section paper">
+  <header class="sectionHead"><div><p class="kicker">Instrument 03</p><h2>Authority replay</h2></div><p>Scrub one decision sequence. The replay feeds the evidence ledger and exposes the reason for every transition.</p></header>
+  <div class="replayGrid">
+    <div class="timeline panel"><input id="timeline" type="range" min="0" max="6" value="0" step="1"><div id="timelineTicks" class="ticks"></div><article id="replayEvent"><small>t=00</small><h3>Nominal mission authority</h3><p>All monitored evidence is fresh and independent.</p></article></div>
+    <aside class="stateStack panel"><div><small>AUTHORITY</small><strong id="replayAuthority">A3</strong></div><div><small>FCOI</small><strong id="replayFcoi">0.18</strong></div><div><small>SENSOR AGREEMENT</small><strong id="replaySensor">0.91</strong></div><div><small>PROVENANCE</small><strong id="replayProvenance">VALID</strong></div><div><small>ANCHOR</small><strong id="replayAnchor">STANDBY</strong></div></aside>
+  </div>
+</section>
+
+<section id="ledger" class="section light">
+  <header class="sectionHead"><div><p class="kicker">Instrument 04</p><h2>Evidence ledger</h2></div><p>An auditable record of what changed, which authority boundary moved, what remained survivable, and what recovery requires.</p></header>
+  <div class="ledgerTools"><button id="exportLedger" class="button">Export JSON</button><button id="printLedger" class="button ghost ink">Print report</button><button id="clearLedger" class="button ghost ink">Reset ledger</button></div>
+  <div class="ledgerTableWrap"><table><thead><tr><th>Time</th><th>Evidence</th><th>Decision</th><th>Authority</th><th>Invariant / recovery burden</th></tr></thead><tbody id="ledgerRows"></tbody></table></div>
+</section>
+
+<section id="authority" class="section dark">
+  <header class="sectionHead"><div><p class="kicker">Instrument 05</p><h2>Authority-envelope visualizer</h2></div><p>Select an authority state to inspect the exact action class CERBERUS would expose to the strategic layer.</p></header>
+  <div class="authorityGrid"><div class="authorityButtons" id="authorityButtons"></div><article class="panel envelope"><small id="authorityLabel">A3 · bounded mission authority</small><h3 id="authorityTitle">Proposal envelope open</h3><div class="permitGrid"><div><h4>Permitted</h4><ul id="permitted"></ul></div><div><h4>Denied or retained below</h4><ul id="denied"></ul></div></div><p id="authorityRule"></p></article></div>
+</section>
+
+<section id="provenance" class="section paper">
+  <header class="sectionHead"><div><p class="kicker">Instrument 06</p><h2>Command provenance inspector</h2></div><p>Authentication is necessary but not sufficient. Inspect origin, freshness, approvals, and whether a command may influence authority.</p></header>
+  <div class="provenanceGrid">
+    <form id="commandForm" class="panel formGrid compact"><label>Origin<select id="commandOrigin"><option>Mission control</option><option>Onboard Pilot</option><option>Maintenance terminal</option><option>Unknown relay</option></select></label><label>Command age (seconds)<input id="commandAge" type="number" min="0" value="22"></label><label>Signature<select id="commandSignature"><option>Valid</option><option>Invalid</option><option>Unavailable</option></select></label><label>Two-party approval<select id="commandApproval"><option>Present</option><option>Absent</option><option>Not required</option></select></label><label>Requested effect<select id="commandEffect"><option>Request diagnostics</option><option>Propose maneuver</option><option>Re-arm promotion law</option><option>Assign authority directly</option><option>Override Anchor invariant</option></select></label><button class="button" type="submit">Inspect command</button></form>
+    <article id="commandResult" class="panel commandResult"><div class="stamp allow">CONDITIONALLY ADMISSIBLE</div><h3>Diagnostics request</h3><p>The command may request diagnostics but cannot assign authority, waive dwell, write the independence budget, or override Anchor invariants.</p><dl><div><dt>Authentication</dt><dd>PASS</dd></div><div><dt>Freshness</dt><dd>PASS</dd></div><div><dt>Approval chain</dt><dd>PASS</dd></div><div><dt>Authority influence</dt><dd>ONE-WAY / BOUNDED</dd></div></dl></article>
+  </div>
+</section>
+
+<section id="failures" class="section light">
+  <header class="sectionHead"><div><p class="kicker">Reference 01</p><h2>Failure gallery</h2></div><p>Each case states what fails, what CERBERUS can observe, what it cannot infer, and what remains survivable.</p></header>
+  <div class="failureGrid" id="failureGrid"></div>
+</section>
+
+<section id="claims" class="section dark">
+  <header class="sectionHead"><div><p class="kicker">Reference 02</p><h2>Claims-to-evidence map</h2></div><p>Strong claims are bounded by the evidence actually present in the repository.</p></header>
+  <div class="claimsWrap"><table><thead><tr><th>Claim</th><th>Current support</th><th>Status</th><th>Next falsification step</th></tr></thead><tbody id="claimsRows"></tbody></table></div>
+</section>
+
+<section id="hil" class="section paper">
+  <header class="sectionHead"><div><p class="kicker">Roadmap</p><h2>Hardware-in-the-loop path</h2></div><p>A staged route from browser demonstrations to channel-specific test evidence.</p></header>
+  <div class="hilPath">
+    <article><b>01</b><h3>Software loop</h3><p>Replay recorded telemetry, inject timing faults, preserve full traces, and pre-register thresholds.</p></article>
+    <i>→</i><article><b>02</b><h3>Processor separation</h3><p>Run Pilot, Watchdog, Vigil witness, and Anchor on deliberately different execution surfaces.</p></article>
+    <i>→</i><article><b>03</b><h3>Sensor / bus emulation</h3><p>Inject shared power, clock, bus, and environmental causes instead of isolated component faults.</p></article>
+    <i>→</i><article><b>04</b><h3>Actuator boundary</h3><p>Verify that only Watchdog-approved commands reach the actuator interface and Anchor cannot be bypassed.</p></article>
+    <i>→</i><article><b>05</b><h3>Held-out campaign</h3><p>Measure detection, false alarms, availability cost, restoration latency, and architecture violations.</p></article>
+  </div>
+</section>
+
+<section id="hub" class="section light">
+  <header class="sectionHead"><div><p class="kicker">Research hub</p><h2>Read, test, challenge.</h2></div><p>The workbench separates demonstrations, documentation, executable reference code, research claims, and open collaboration needs.</p></header>
+  <div class="hubGrid">
+    <a href="index.html"><small>CORE INTERFACE</small><h3>Independence Observatory</h3><p>Vigil trace, authority law, Structural FCOI, and Stress Suite atlas.</p></a>
+    <a href="scenarios.html"><small>SCENARIOS</small><h3>Incident Theatre</h3><p>Satellite operations, communications blackout, and HAL containment.</p></a>
+    <a href="flight-kernel.html"><small>EXECUTABLE REFERENCE</small><h3>Flight Reference Kernel</h3><p>C11 authority law, worker capability topology, property campaign, and CBMC harness.</p></a>
+    <a href="flight-reference/specification/authority-state-machine.md"><small>TRACEABILITY</small><h3>Authority Specification</h3><p>Named properties, thresholds, action surfaces, and implementation mapping.</p></a>
+    <a href="SCENARIO_NOTES.md"><small>DOCUMENTATION</small><h3>Scenario notes</h3><p>Architecture mapping, assumptions, negative controls, and non-claims.</p></a>
+    <a href="README.md"><small>PROJECT</small><h3>Repository guide</h3><p>Scope, evidence boundary, research basis, and local use.</p></a>
+  </div>
+  <article class="collaboration panel">
+    <div><p class="kicker">Collaboration</p><h3>What the program needs next</h3></div>
+    <div class="collabTags"><span>Spacecraft GNC</span><span>Runtime assurance</span><span>Formal methods</span><span>Common-cause failure</span><span>Fault injection</span><span>Independent review</span><span>HIL facilities</span></div>
+    <p>Useful contributions include adversarial scenarios, reviewed causal graphs, alternative detectors, mission-specific invariant sets, reproducibility checks, and critiques that identify where the architecture can still flatter itself.</p>
+  </article>
+</section>
+
+<section class="evidenceBoundary">
+  <p class="kicker">Evidence boundary</p>
+  <h2>This workbench makes decisions inspectable. It does not make them certified.</h2>
+  <div><p><strong>Shown:</strong> illustrative authority logic, one-way evidence effects, explicit provenance rules, traceable demotion, sequential recovery, negative controls, executable reference code, and a bounded research roadmap.</p><p><strong>Not established:</strong> operational detector performance, realistic telemetry robustness, complete causal models, flight authority validity, hardware isolation, certification, TRL, or a completed safety case.</p></div>
+  <blockquote>Evidence may reduce permission. It cannot manufacture authority.</blockquote>
+</section>
+</main>
+<footer><span>Copyright © 2026 Emily Echterhoff. All rights reserved.</span><a href="#top">Return to top ↑</a></footer>
+<script src="workbench.js"></script>
+</body>
+</html>

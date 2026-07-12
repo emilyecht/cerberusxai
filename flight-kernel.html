@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="author" content="Emily Echterhoff">
+<meta name="description" content="CERBERUS process-separated browser laboratory and executable C authority-kernel reference implementation.">
+<meta name="theme-color" content="#080b09">
+<title>CERBERUS — Flight Reference Kernel</title>
+<link rel="stylesheet" href="flight-kernel.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html"><span>◁◁◁</span>CERBERUS</a>
+  <div><b>FLIGHT REFERENCE LAB</b><small>capability topology · executable authority kernel</small></div>
+  <nav><a href="assurance-workbench.html">Workbench</a><a href="scenarios.html">Incidents</a></nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="heroCopy">
+    <p class="kicker">Reference implementation · deliberately bounded</p>
+    <h1>The Pilot cannot reach the actuator.</h1>
+    <p class="lede">Five dedicated Web Workers are connected by explicit message capabilities. Pilot can propose. Vigil can reduce permission. The authority kernel can contract or cautiously restore. Watchdog can gate. Anchor alone owns the survivable output surface.</p>
+    <div class="heroActions"><a class="button" href="#lab">Run fault campaign</a><a class="button ghost" href="flight-reference/README.md">Inspect C kernel</a></div>
+  </div>
+  <aside class="heroState">
+    <small>LIVE AUTHORITY</small>
+    <strong id="liveAuthority">A3</strong>
+    <dl><div><dt>Independence budget</dt><dd id="liveBudget">0.78</dd></div><div><dt>Recovery dwell</dt><dd id="liveDwell">0 / 3</dd></div><div><dt>Actuator owner</dt><dd>ANCHOR</dd></div><div><dt>Pilot actuator port</dt><dd class="denied">NONE</dd></div></dl>
+  </aside>
+</section>
+
+<section class="boundaryStrip">
+  <b>Evidence boundary:</b> the C kernel is an executable research reference; the worker topology demonstrates coded message ownership. Neither is flight software, hardware isolation, certification evidence, or operational validation.
+</section>
+
+<section id="topology" class="section dark">
+  <header class="sectionHead"><div><p class="kicker">Capability graph</p><h2>Ports are authority.</h2></div><p>A component can send only the message classes supported by the ports it receives. Pilot is never given the Watchdog-to-Anchor command capability or either authority-update capability.</p></header>
+  <div class="topology" aria-label="CERBERUS process capability topology">
+    <article class="node pilot"><b>P</b><h3>Pilot worker</h3><p>Observation → proposal</p><small>No Anchor port</small></article>
+    <div class="edge"><span>PROPOSAL</span><i>→</i></div>
+    <article class="node watchdog"><b>W</b><h3>Watchdog worker</h3><p>Envelope + provenance gate</p><small>Capability: command</small></article>
+    <div class="edge"><span>APPROVED COMMAND</span><i>→</i></div>
+    <article class="node anchor"><b>A</b><h3>Anchor worker</h3><p>Local survival invariants</p><small>Actuator owner</small></article>
+    <article class="node vigil"><b>V</b><h3>Vigil worker</h3><p>Evidence only</p><small>No actuator port</small></article>
+    <div class="edge vertical"><span>EVIDENCE</span><i>↓</i></div>
+    <article class="node kernel"><b>K</b><h3>Authority kernel</h3><p>Fast demotion · slow recovery</p><small>One-level promotion</small></article>
+    <div class="authorityEdges"><span>AUTHORITY UPDATE → WATCHDOG</span><span>AUTHORITY UPDATE → ANCHOR</span></div>
+  </div>
+</section>
+
+<section id="lab" class="section paper">
+  <header class="sectionHead"><div><p class="kicker">Executable browser campaign</p><h2>Attack the authority path.</h2></div><p>Each run injects evidence and proposals through the declared component interfaces. The event trace shows where authority contracts, which proposal is rejected, and whether any command reaches Anchor.</p></header>
+  <div class="labGrid">
+    <form id="campaignForm" class="controls">
+      <label>Campaign<select id="campaign"><option value="collision">Collision avoidance + shared-model drift</option><option value="blackout">Communications blackout</option><option value="gaming">Recovery-threshold gaming</option><option value="override">Determined direct-override attempt</option></select></label>
+      <label>Promotion dwell<input id="dwell" type="number" min="2" max="20" value="3"></label>
+      <button class="button" type="submit">Run campaign</button>
+      <button id="resetLab" class="button ghostDark" type="button">Reset workers</button>
+      <p class="micro">The test controller may inject observations and evidence and read telemetry. It does not route Pilot messages to Anchor.</p>
+    </form>
+    <div class="stage">
+      <div class="statusRow"><article><small>Authority</small><strong id="stageAuthority">A3</strong></article><article><small>Target</small><strong id="stageTarget">A3</strong></article><article><small>Last disposition</small><strong id="stageDisposition">READY</strong></article><article><small>Executed commands</small><strong id="executedCount">0</strong></article></div>
+      <ol id="eventLog" class="eventLog" aria-live="polite"></ol>
+    </div>
+  </div>
+</section>
+
+<section class="section light">
+  <header class="sectionHead"><div><p class="kicker">Load-bearing properties</p><h2>Small enough to challenge.</h2></div><p>The C11 reference kernel isolates the authority law from orbital dynamics, authentication, and FCOI estimation so its core state transitions remain inspectable.</p></header>
+  <div class="propertyGrid">
+    <article><b>P1</b><h3>Unknown fails closed</h3><p>Unknown, invalid, malformed, unauthenticated, or non-independent evidence yields an A0 target.</p></article>
+    <article><b>P2</b><h3>Demote immediately</h3><p>A lower defensible target is applied in the same step and may skip intermediate states.</p></article>
+    <article><b>P3</b><h3>Restore sequentially</h3><p>Fresh evidence must persist through dwell; promotion advances by only one state.</p></article>
+    <article><b>P4</b><h3>Reject replay</h3><p>A repeated evidence epoch cannot fill the recovery counter.</p></article>
+    <article><b>P5</b><h3>Non-delegable boundary</h3><p>Assign-authority and override-Anchor are denied at every state.</p></article>
+    <article><b>P6</b><h3>Preserve A0</h3><p>Attitude, thermal survival, authenticated beaconing, and bounded isolation remain available.</p></article>
+  </div>
+  <div class="codeLinks">
+    <a href="flight-reference/include/cerberus_authority.h"><small>PUBLIC CONTRACT</small><b>cerberus_authority.h</b></a>
+    <a href="flight-reference/src/cerberus_authority.c"><small>IMPLEMENTATION</small><b>cerberus_authority.c</b></a>
+    <a href="flight-reference/tests/test_authority.c"><small>UNIT TESTS</small><b>Named safety properties</b></a>
+    <a href="flight-reference/tests/property_campaign.c"><small>PROPERTY CAMPAIGN</small><b>250,000 transitions</b></a>
+    <a href="flight-reference/verification/cbmc_harness.c"><small>FORMAL HARNESS</small><b>CBMC assertions</b></a>
+    <a href="flight-reference/specification/authority-state-machine.md"><small>TRACEABILITY</small><b>State-machine specification</b></a>
+  </div>
+</section>
+
+<section class="finalBoundary">
+  <p class="kicker">What this establishes</p>
+  <h2>An inspectable implementation can enforce the intended authority asymmetry.</h2>
+  <div><p><strong>Implemented:</strong> C11 authority kernel, named unit tests, deterministic randomized property campaign, CBMC harness, process-separated worker topology, capability-scoped command path, freshness/epoch handling, and explicit A0 action residue.</p><p><strong>Not established:</strong> correct mission thresholds, realistic detector performance, spacecraft dynamics, cryptographic provenance, hard real-time operation, hardware independence, formal completeness, certification, or flight readiness.</p></div>
+  <blockquote>Capability may propose. Evidence may constrain. Only the survival boundary may act.</blockquote>
+</section>
+</main>
+
+<footer><span>Copyright © 2026 Emily Echterhoff. All rights reserved.</span><span>CERBERUS · Assume failure. Prove survival.</span></footer>
+<script src="flight-kernel.js"></script>
+</body>
+</html>

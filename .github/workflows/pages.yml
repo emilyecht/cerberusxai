@@ -1,0 +1,51 @@
+name: Deploy CERBERUS XAI Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate unified site
+        run: |
+          test -f index.html
+          test -f observatory.html
+          test -f scenarios.html
+          test -f assurance-workbench.html
+          test -f flight-kernel.html
+          test -f flight-reference/src/cerberus_authority.c
+          grep -q 'src="observatory.html"' index.html
+          grep -q 'src="scenarios.html"' index.html
+          grep -q 'src="assurance-workbench.html"' index.html
+          grep -q 'src="flight-kernel.html"' index.html
+          grep -q 'id="kernel"' index.html
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
