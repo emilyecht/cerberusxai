@@ -15,6 +15,10 @@ The original front page is retained as [`observatory.html`](observatory.html), a
 
 The transfer preserves the browser simulations, scenario suite, evidence workbench, Web Worker capability topology, C11 authority kernel, unit tests, deterministic 250,000-transition property campaign, CBMC harness, specifications, documentation, and supporting source files.
 
+## Unified deployment
+
+The repository root is the single-page interface. Its four embedded same-origin modules remain fully interactive, while the standalone HTML files remain available for direct inspection and debugging. The Pages workflow validates every embedded route before upload.
+
 ## Local use
 
 Serve the repository so Web Workers and embedded same-origin modules load correctly:
