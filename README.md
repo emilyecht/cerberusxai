@@ -2,6 +2,10 @@
 
 A unified single-page presentation of **CERBERUS: Runtime Independence Budgeting for Layered Assurance in Autonomous Systems**.
 
+## Live site
+
+[Open the CERBERUS XAI GitHub Pages interface](https://emilyecht.github.io/cerberusxai/)
+
 This repository transfers the complete `cerberus-pages` research interface and preserves its standalone modules while making all four major surfaces visible on one front page:
 
 - Independence Observatory
