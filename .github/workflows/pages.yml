@@ -27,16 +27,22 @@ jobs:
       - name: Validate unified site
         run: |
           test -f index.html
+          test -f cerberusx.css
+          test -f embed-fix.css
+          test -f cerberusx.js
           test -f observatory.html
           test -f scenarios.html
           test -f assurance-workbench.html
           test -f flight-kernel.html
           test -f flight-reference/src/cerberus_authority.c
-          grep -q 'src="observatory.html"' index.html
-          grep -q 'src="scenarios.html"' index.html
-          grep -q 'src="assurance-workbench.html"' index.html
-          grep -q 'src="flight-kernel.html"' index.html
+          grep -q 'src="observatory.html?embed=2"' index.html
+          grep -q 'src="scenarios.html?embed=2"' index.html
+          grep -q 'src="assurance-workbench.html?embed=2"' index.html
+          grep -q 'src="flight-kernel.html?embed=2"' index.html
+          grep -q 'data-cerberus-embed' index.html
           grep -q 'id="kernel"' index.html
+          grep -q 'cerberus-launcher' cerberusx.js
+          grep -q 'max-width: 820px' embed-fix.css
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
